@@ -1,0 +1,20 @@
+{
+  "id": 345,
+  "name": "kayttooikeusryhmä",
+  "rooliRajoite": "roolirajoite",
+  "organisaatioViite": [
+    {
+      "id": 44,
+      "organisaatioTyyppi": "viitteen tyyppi"
+    }
+  ],
+  "description": {
+    "id": 3,
+    "texts": [
+      {
+        "text": "ryhmän kuvaus",
+        "lang": "FI"
+      }
+    ]
+  }
+}

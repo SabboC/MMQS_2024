@@ -1,0 +1,17 @@
+[
+  {
+    "oidHenkilo": "1.2.3.4.5",
+    "hetu": null,
+    "etunimet": "Matti Meikäläinen",
+    "kutsumanimi": "Matti",
+    "sukunimi": "Meikäläinen",
+    "aidinkieli": {
+      "kieliKoodi": "FI",
+      "kieliTyyppi": null
+    },
+    "asiointiKieli": {
+      "kieliKoodi": "EN",
+      "kieliTyyppi": null
+    }
+  }
+]

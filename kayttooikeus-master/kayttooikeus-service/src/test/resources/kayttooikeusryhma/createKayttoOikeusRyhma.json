@@ -1,0 +1,52 @@
+{
+  "ryhmaName": {
+    "texts": [
+      {
+        "lang": "FI",
+        "text": "ryhmän nimi"
+      },
+      {
+        "lang": "EN",
+        "text": "ryhmän nimi en"
+      },
+      {
+        "lang": "SV",
+        "text": "ryhmän nimi sv"
+      }
+    ]
+  },
+  "palvelutRoolit": [
+    {
+      "palveluName": "Palvelun nimi",
+      "palveluTexts": {
+        "texts": [
+          {
+            "lang": "FI",
+            "text": "palvelun kuvaus"
+          },
+          {
+            "lang": "EN",
+            "text": "palvelun kuvaus en"
+          },
+          {
+            "lang": "SV",
+            "text": "palvelun kuvaus sv"
+          }
+        ]
+      },
+      "rooli": "Rooli",
+      "rooliTexts": {
+        "texts": [
+          {
+            "lang": "FI",
+            "text": "rooli kuvaus"
+          }
+        ]
+      }
+    }
+  ],
+  "organisaatioTyypit": [
+    "ORGANISAATIOTYYPPI"
+  ],
+  "rooliRajoite": "roolirajoite"
+}

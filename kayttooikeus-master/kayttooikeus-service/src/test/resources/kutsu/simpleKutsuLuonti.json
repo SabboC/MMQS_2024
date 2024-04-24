@@ -1,0 +1,30 @@
+{
+    "etunimi": "Essi",
+    "sukunimi": "Esimerkki",
+    "sahkoposti": "example@example.com",
+    "asiointikieli": "fi",
+    "organisaatiot": [
+        {
+            "organisaatioOid": "organisaatio1",
+            "kayttoOikeusRyhmat": [
+                {
+                    "id": 1
+                },
+                {
+                    "id": 2
+                }
+            ]
+        },
+        {
+            "organisaatioOid": "organisaatio2",
+            "kayttoOikeusRyhmat": [
+                {
+                    "id": 1
+                },
+                {
+                    "id": 3
+                }
+            ]
+        }
+    ]
+}

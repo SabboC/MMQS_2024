@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>kayttooikeuspalvelu</artifactId>
+        <groupId>fi.vm.sade.kayttooikeus</groupId>
+        <version>1.1.4-SNAPSHOT</version>
+        <relativePath>..</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    
+    <artifactId>kayttooikeus-api</artifactId>
+    <packaging>jar</packaging>
+
+    <name>Käyttöoikeuspalvelu :: Api</name>
+
+    <properties>
+        <!-- Deploy this module to artifactory -->
+        <maven.deploy.skip>false</maven.deploy.skip>
+    </properties>
+
+    <!-- No external dependencies here so api can be compiled independently -->
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+        </dependency>
+    </dependencies>
+</project>

@@ -1,0 +1,20 @@
+{
+  "rooli": "joku rooli",
+  "textGroup": {
+    "texts": [
+      {
+        "lang": "FI",
+        "text": "oikeuden kuvaus"
+      },
+      {
+        "lang": "EN",
+        "text": "oikeuden kuvaus en"
+      },
+      {
+        "lang": "SV",
+        "text": "oikeuden kuvaus sv"
+      }
+    ]
+  },
+  "palveluName": "palvelun nimi"
+}

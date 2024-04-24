@@ -1,0 +1,72 @@
+{
+  "oidHenkilo": "1.2.3.4.5",
+  "hetu": null,
+  "passivoitu": false,
+  "henkiloTyyppi": "VIRKAILIJA",
+  "etunimet": "etunimi",
+  "kutsumanimi": "etunimi",
+  "sukunimi": "sukunimi",
+  "aidinkieli": {
+    "kieliKoodi": "bi",
+    "kieliTyyppi": "bislama"
+  },
+  "asiointiKieli": {
+    "kieliKoodi": "fi",
+    "kieliTyyppi": "suomi"
+  },
+  "kielisyys": [],
+  "kansalaisuus": [
+    {
+      "kansalaisuusKoodi": "328"
+    }
+  ],
+  "kasittelijaOid": "1.2.3.4.1",
+  "syntymaaika": "1997-04-05",
+  "sukupuoli": "1",
+  "passinnumero": null,
+  "oppijanumero": null,
+  "turvakielto": false,
+  "eiSuomalaistaHetua": false,
+  "yksiloity": false,
+  "yksiloityVTJ": false,
+  "yksilointiYritetty": false,
+  "duplicate": false,
+  "created": 1491199989795,
+  "modified": 1494491654488,
+  "vtjsynced": null,
+  "huoltaja": null,
+  "yhteystiedotRyhma": [
+    {
+      "id": 10000,
+      "ryhmaKuvaus": "yhteystietotyyppi2",
+      "ryhmaAlkuperaTieto": "alkupera2",
+      "readOnly": false,
+      "yhteystieto": [
+        {
+          "yhteystietoTyyppi": "YHTEYSTIETO_SAHKOPOSTI",
+          "yhteystietoArvo": "yhteystietotyyppi2email@emai.fi"
+        },
+        {
+          "yhteystietoTyyppi": "YHTEYSTIETO_MATKAPUHELINNUMERO",
+          "yhteystietoArvo": ""
+        },
+        {
+          "yhteystietoTyyppi": "YHTEYSTIETO_PUHELINNUMERO",
+          "yhteystietoArvo": "010-00000001"
+        },
+        {
+          "yhteystietoTyyppi": "YHTEYSTIETO_KUNTA",
+          "yhteystietoArvo": ""
+        },
+        {
+          "yhteystietoTyyppi": "YHTEYSTIETO_POSTINUMERO",
+          "yhteystietoArvo": ""
+        },
+        {
+          "yhteystietoTyyppi": "YHTEYSTIETO_KATUOSOITE",
+          "yhteystietoArvo": ""
+        }
+      ]
+    }
+  ]
+}

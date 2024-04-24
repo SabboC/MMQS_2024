@@ -1,0 +1,85 @@
+name: kayttooikeus
+on:
+  workflow_dispatch:
+  push:
+    branches: [ master ]
+  pull_request:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: "21"
+          distribution: "corretto"
+          cache: "maven"
+      - name: Maven version
+        run: mvn --version
+      - name: Cache SonarCloud packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
+      - name: Build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: mvn clean install -B -Dbranch=$GITHUB_REF_NAME -Drevision=$GITHUB_SHA -DbuildNumber=$GITHUB_RUN_NUMBER/$GITHUB_RUN_ATTEMPT org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Opetushallitus_kayttooikeus
+      - name: Upload kayttooikeus-jar
+        uses: actions/upload-artifact@v4
+        with:
+          name: kayttooikeus-jar
+          path: kayttooikeus-service/target/kayttooikeus-service-*SNAPSHOT.jar
+  deploy-container:
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+      - name: Download kayttooikeus-jar
+        uses: actions/download-artifact@v4
+        with:
+          name: kayttooikeus-jar
+      - name: Build Docker Container
+        shell: bash
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: |
+          git clone https://github.com/Opetushallitus/ci-tools.git
+          source ci-tools/common/setup-tools.sh
+          export BASE_IMAGE="baseimage-fatjar-openjdk21:master"
+          export ARTIFACT_NAME="kayttooikeus"
+          cp kayttooikeus-service-*SNAPSHOT.jar $DOCKER_BUILD_DIR/artifact/$ARTIFACT_NAME.jar
+          cp -vr src/main/resources/oph-configuration $DOCKER_BUILD_DIR/config/
+          ./ci-tools/common/pull-image.sh
+          ./ci-tools/github-build/build-fatjar.sh $ARTIFACT_NAME
+          ./ci-tools/github-build/upload-image.sh $ARTIFACT_NAME
+  deploy-artifacts:
+    needs: [ build ]
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'corretto'
+          cache: 'maven'
+      - name: Maven version
+        run: mvn --version
+      - name: Deploy
+        env:
+          ARTIFACTORY_USERNAME: ${{ secrets.ARTIFACTORY_USERNAME }}
+          ARTIFACTORY_PASSWORD: ${{ secrets.ARTIFACTORY_PASSWORD }}
+        run: |
+          git clone https://github.com/Opetushallitus/ci-tools.git
+          source ci-tools/common/setup-tools.sh
+          mvn deploy -pl fi.vm.sade.kayttooikeus:kayttooikeus-api -am -DskipTests --settings ci-tools/common/maven-settings.xml
+

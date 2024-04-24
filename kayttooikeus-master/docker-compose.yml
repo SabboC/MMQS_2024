@@ -1,0 +1,22 @@
+version: '3'
+services:
+  database:
+    container_name: kayttooikeus-db
+    image: postgres:13.4
+    environment:
+      - POSTGRES_DB=kayttooikeus
+      - POSTGRES_USER=oph
+      - POSTGRES_PASSWORD=oph
+    ports:
+      - target: 5432
+        host_ip: "127.0.0.1"
+  test-database:
+    container_name: kayttooikeus-test-db
+    image: postgres:13.4
+    environment:
+      - POSTGRES_DB=kayttooikeus
+      - POSTGRES_USER=oph
+      - POSTGRES_PASSWORD=oph
+    ports:
+      - target: 5432
+        host_ip: "127.0.0.1"

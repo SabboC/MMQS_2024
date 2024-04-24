@@ -1,0 +1,23 @@
+[
+  {
+    "id": 44,
+    "name": "ryhmänimi",
+    "rooliRajoite": "roolirajoite",
+    "organisaatioViite": [
+      {
+        "id": 3423,
+        "organisaatioTyyppi": "organisaatiotyyppi"
+      }
+    ],
+    "description": [
+      {
+        "text": "kuvaus en",
+        "lang": "EN"
+      },
+      {
+        "text": "Kuvaus",
+        "lang": "FI"
+      }
+    ]
+  }
+]

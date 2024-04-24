@@ -1,0 +1,63 @@
+{
+  "name": "kayttooikeus_kutsu",
+  "language": "FI",
+  "type": "email",
+  "storingOid": null,
+  "organizationOid": null,
+  "structure": {
+    "name": "kayttooikeus_kutsu_rakenne",
+    "language": "FI",
+    "description": "Virkailijan kutsu Opintopolun käyttäjäksi (kayttooikeus-palvelu).",
+    "contentStructures": [
+      {
+        "type": "email",
+        "style": "@page {\n    size: 210mm 297mm;\n    margin: 16mm 10mm 30mm 12mm;@bottom-center {\n    tvertical-align: top;\n    tcontent: element(footer);\n}\n\nbody {\n    font-size: 12px;\n    font-family: Calibri, Arial, sans-serif;\n    margin: 0;\n}\n\n.header {\n    margin: 4mm 0 0 11mm;\n    height: 80mm;\n    width: 100mm;\n    float: left;\n}\n\n.asiaotsikko {\n    clear: both;\n}\n\n.sisalto {\n    clear: both;\n    line-height: 140%;\n}\n\ntable {\n    border-collapse: collapse;\n}\n\ntd, th {\n    border: 1px solid gray;\n    padding: 5px;\n}\n\ntd {\n    text-align: center;\n}\n\nth {\n    vertical-align: top;\n    text-align: center;\n}\n\nol, ul {\n    padding-top: 0;\n    margin-top: 0;\n    font-weight: 100;\n    padding-left: 4mm;\n    margin-left: 2em;\n}\n\nul.dash {\n    list-style: none;\n    margin-left: 0;\n    padding-left: 1em;\n}\n\nul.dash li:before {\n    display: inline-block;\n    content: \"-\";\n    width: 1em;\n    margin-left: -1em;\n}\n\n.footer {\n    font-size: 90%;\n    position: running(footer);\n}\n\n.footer .heading {\n    width: 100%;\n}\n\n.footer div {\n    float: left;\n    width: 30mm;\n}",
+        "styleName": "kayttooikeus_kutsu_style",
+        "contents": [
+          {
+            "role": "header",
+            "name": "email_subject",
+            "contentType": "plain",
+            "content": "$subject"
+          },
+          {
+            "role": "body",
+            "name": "email_body",
+            "contentType": "html",
+            "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"\n        \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">\n<html xmlns=\"http://www.w3.org/1999/xhtml\">\n<head>\n    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"/>\n    <meta http-equiv=\"Content-Style-Type\" content=\"text/css\"/>\n</head>\n<body>\n<div>\n    <div class=\"sisalto\">\n        <p>Hei $etunimi,</p>\n        <p>sinut on kutsuttu virkailijaksi Opetushallinnon palvelukokonaisuuteen. Sinulle on annettu käyttöoikeudet alla olevan mukaisesti.<br/>\n        </p>\n        #if ($organisaatiot and $organisaatiot.size() > 0)\n            #foreach($org in $organisaatiot)\n                #if ($org.name)<h3>$org.name</h3>#end\n                #if ($org.permissions and $org.permissions.size() > 0)\n                <p>#foreach($permission in $org.permissions)\n                    $permission<br/>\n                #end</p>\n                #end\n            #end\n        #end\n        <p>\n            Päästäksesi käyttämään palvelua, sinun tulee rekisteröityä alla olevan linkin kautta ja tunnistautua vahvasti mobiilivarmenteen, pankkitunnusten tai varmennekortin avulla.\n        </p>\n        <p>\n            <a href=\"${url}\">Rekisteröidy tästä</a>\n        </p>\n        <p>\n            Terveisin,<br/>\n            Opetushallinnon palvelukokonaisuuteen kuuluva käyttöoikeuksien hallinnointi\n        </p>\n    </div>\n</div>\n</body>"
+          }
+        ]
+      }
+    ],
+    "replacements": [
+      {
+        "key": "url",
+        "name": "Kutsulinkki",
+        "description": "Kutsulinkin URL-osoite",
+        "contentType": "plain",
+        "numberOfRows": 1
+      }
+    ]
+  },
+  "replacements": [
+    {
+      "name": "url",
+      "mandatory": true
+    },
+    {
+      "name": "subject",
+      "defaultValue": "opintopolku.fi - kutsuminen virkailijaksi",
+      "mandatory": false
+    },
+    {
+      "name": "etunimi",
+      "defaultValue": "",
+      "mandatory": false
+    },
+    {
+      "name": "sukunimi",
+      "defaultValue": "",
+      "mandatory": false
+    }
+  ]
+}

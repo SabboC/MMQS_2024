@@ -1,0 +1,18 @@
+[
+  {
+    "kayttajaTyyppi": "OPPIJA",
+    "oidHenkilo": "string",
+    "organisaatiot": [
+      {
+        "kayttooikeudet": [
+          {
+            "oikeus": "string",
+            "palvelu": "string"
+          }
+        ],
+        "organisaatioOid": "string"
+      }
+    ],
+    "username": "string"
+  }
+]

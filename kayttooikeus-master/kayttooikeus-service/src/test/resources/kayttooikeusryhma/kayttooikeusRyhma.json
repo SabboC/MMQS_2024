@@ -1,0 +1,24 @@
+[
+  {
+    "ryhmaId": 234243,
+    "myonnettyTapahtumaId": 234234,
+    "organisaatioOid": "84384.23832732.234443",
+    "tehtavanimike": "joku tehtävä",
+    "ryhmaNames": [
+      {
+        "text": "Ryhmänimi test",
+        "lang": "FI"
+      }
+    ],
+    "tila": "MYONNETTY",
+    "tyyppi": "joku tyyppi",
+    "alkuPvm": "2016-01-01",
+    "voimassaPvm": "2016-02-22",
+    "kasitelty": "2016-01-01T00:00:00",
+    "kasittelijaOid": "234.2434.546.234",
+    "kasittelijaNimi": "joku käsittelijä",
+    "selected": true,
+    "removed": false,
+    "muutosSyy": "testaillaan"
+  }
+]

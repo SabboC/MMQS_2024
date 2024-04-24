@@ -1,0 +1,19 @@
+[
+  {
+    "id": 33,
+    "name": "Käyttöoikeusryhmä",
+    "rooliRajoite": "Roolirajoite test",
+    "organisaatioViite": [
+      {
+        "id": 44,
+        "organisaatioTyyppi": "organisaatiotyyppi"
+      }
+    ],
+    "description": [
+      {
+        "text": "Kuvaus",
+        "lang": "FI"
+      }
+    ]
+  }
+]

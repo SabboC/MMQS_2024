@@ -1,0 +1,1 @@
+select insertkayttooikeus('MPASSID', 'PALVELU_TALLENTAJA', 'Palvelun tallentaja');

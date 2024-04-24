@@ -1,0 +1,34 @@
+[
+  {
+    "aikaleima": "2015-01-01T00:00:00",
+    "kasittelija": "kasittelija",
+    "kayttoOikeusRyhmaId": 5,
+    "kuvaus": [
+      {
+        "lang": "FI",
+        "text": "nimi"
+      }
+    ],
+    "kayttoOikeusId": 1,
+    "kayttoOikeusKuvaus": [
+      {
+        "lang": "FI",
+        "text": "Oikeus"
+      }
+    ],
+    "rooli": "ROOLI",
+    "palvelu": "PALVELU",
+    "palveluKuvaus": [
+      {
+        "lang": "FI",
+        "text": "Palvelu"
+      }
+    ],
+    "organisaatioOid": "orgOid",
+    "tehtavanimike": "nimike",
+    "tila": "HYLATTY",
+    "tyyppi": "KOOSTEROOLI",
+    "voimassaAlkuPvm": "2015-01-01",
+    "voimassaLoppuPvm": "2015-12-31"
+  }
+]

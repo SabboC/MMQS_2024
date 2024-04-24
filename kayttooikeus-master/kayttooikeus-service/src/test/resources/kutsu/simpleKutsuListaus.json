@@ -1,0 +1,15 @@
+[
+  {
+    "id": 1,
+    "aikaleima": "2016-01-01T00:00:00",
+    "sahkoposti": "posti@example.com",
+    "organisaatiot": [
+      {
+        "organisaatioOid": "OID",
+        "nimi": {
+          "fi": "Oikeus"
+        }
+      }
+    ]
+  }
+]

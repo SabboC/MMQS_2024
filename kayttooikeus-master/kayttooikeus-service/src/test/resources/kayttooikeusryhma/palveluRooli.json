@@ -1,0 +1,18 @@
+[
+  {
+    "palveluName": "palvelunimi",
+    "palveluTexts": [
+      {
+        "text": "palvelu kuvaus",
+        "lang": "FI"
+      }
+    ],
+    "rooli": "joku rooli",
+    "rooliTexts": [
+      {
+        "text": "rooli kuvaus",
+        "lang": "FI"
+      }
+    ]
+  }
+]

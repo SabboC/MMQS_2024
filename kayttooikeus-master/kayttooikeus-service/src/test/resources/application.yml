@@ -1,0 +1,61 @@
+spring:
+  jpa:
+    hibernate:
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
+      ddl-auto: create
+    show-sql: false
+    database-platform: org.hibernate.dialect.H2Dialect
+  flyway:
+    enabled: false
+
+hikari:
+  datasource:
+    driver-class-name: org.h2.Dialect
+    jdbc-url: jdbc:h2:mem:kayttooikeus;MODE=PostgreSQL
+    username: SA
+    maximum-pool-size: 5
+    connection-timeout: 10000
+    max-lifetime: 60000
+db-scheduler:
+  enabled: false
+cas:
+  service: http://localhost/kayttooikeus-service
+  send-renew: false
+  key: kayttooikeus-service
+  mfa:
+    username: cas
+    password: mfa
+    encryption-key: LNLuxm3B5mQiIwggT9vPewkGM7JeDebZWCBjdXxCWQY
+    signing-key: zMpvJwj7bEMW41YMJbAJzXHaSSH3A1JjzLfwXMSWth9yTFM3Ny3eHXmm9r5AEzU83rYNwGT__SicfrA-7ygRdA
+
+host:
+  host-virkailija: localhost
+  host-oppija: localhost
+  host-cas: localhost
+  host-shibboleth: localhost
+  host-varda: localhost
+
+service-users:
+  viestinta:
+    username: test
+    password: test
+  organisaatio:
+    username: test
+    password: test
+  oppijanumerorekisteri:
+    username: test
+    password: test
+
+common:
+  root-organization-oid: 1.2.246.562.10.00000000001
+  group-organization-id: 1.2.246.562.28
+  admin-oid: 1.2.246.562.24.00000000001
+
+kayttooikeus:
+  scheduling:
+    enabled: false
+    run-on-startup: false
+
+logback:
+  access: true

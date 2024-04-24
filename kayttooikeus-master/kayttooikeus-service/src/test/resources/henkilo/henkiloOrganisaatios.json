@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "voimassaAlkuPvm": "2016-01-01",
+    "voimassaLoppuPvm": "2016-12-31",
+    "tyyppi": "HAKIJA",
+    "tehtavanimike": "Devaaja",
+    "passivoitu": false,
+    "organisaatio": {
+      "oid": "1.2.3.4.7",
+      "nimi": {
+        "fi": "Suomeksi",
+        "sv": "Ruotsiksi"
+      },
+      "tyypit": [
+        "OPPILAITOS"
+      ]
+    }
+  }
+]

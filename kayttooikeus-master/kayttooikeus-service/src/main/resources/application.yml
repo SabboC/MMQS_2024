@@ -1,0 +1,107 @@
+logging.level.org:
+  springframework.web: info
+  hibernate: info
+
+spring:
+  main:
+    banner-mode: "off"
+  mandatory-file-encoding: UTF-8
+  profiles.active: default
+  session:
+    store-type: jdbc
+  jackson:
+    serialization:
+      write-dates-as-timestamps: true
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/kayttooikeus?ApplicationName=kayttooikeus-service
+    username: oph
+    password: oph
+    hikari:
+      maximum-pool-size: 2
+      connection-timeout: 10000
+      max-lifetime: 900000
+  flyway:
+    enabled: true
+    table: schema_table_ko
+    out-of-order: true
+    # Only for initial production release, set false afterwards
+    baseline-on-migrate: false
+    # If DB is not empty will not run migrations until this version
+    baseline-version: 20180419161113283
+  jpa:
+    hibernate:
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
+      ddl-auto: validate
+      use-new-id-generator-mappings: true
+    show-sql: false
+    database-platform: org.hibernate.dialect.PostgreSQL95Dialect
+    properties:
+      # https://hibernate.atlassian.net/browse/HHH-12368
+      hibernate.jdbc.lob.non_contextual_creation: true
+  messages:
+    use-code-as-default-message: true
+
+management:
+  endpoints:
+    enabled-by-default: false
+  endpoint:
+    health:
+      enabled: true
+
+server:
+  servlet:
+    context-path: /kayttooikeus-service
+    session:
+      cookie:
+        name: JSESSIONID
+  port: 8080
+
+cas:
+  service: http://localhost:${server.port}/kayttooikeus-service
+  send-renew: false
+  key: kayttooikeus-service
+  mfa:
+    username: cas
+    password: mfa
+    encryption-key: LNLuxm3B5mQiIwggT9vPewkGM7JeDebZWCBjdXxCWQY
+    signing-key: zMpvJwj7bEMW41YMJbAJzXHaSSH3A1JjzLfwXMSWth9yTFM3Ny3eHXmm9r5AEzU83rYNwGT__SicfrA-7ygRdA
+
+host:
+  host-virkailija: localhost:${server.port}
+  host-oppija: localhost:${server.port}
+  host-cas: localhost:8080
+  host-shibboleth: localhost:${server.port}
+  host-varda: localhost:${server.port}
+
+service-users:
+  default:
+    username: kayttooikeus
+    password: kayttooikeus
+  viestinta:
+    username: ${service-users.default.username}
+    password: ${service-users.default.password}
+  organisaatio:
+    username: ${service-users.default.username}
+    password: ${service-users.default.password}
+  oppijanumerorekisteri:
+    username: ${service-users.default.username}
+    password: ${service-users.default.password}
+
+common:
+  root-organization-oid: 1.2.246.562.10.00000000001
+  group-organization-id: 1.2.246.562.28
+  admin-oid: 1.2.246.562.24.00000000001
+  crypto-password: YkXEicbukXv7AouCjUuFUxay
+
+kayttooikeus:
+  uses-ssl-proxy: false
+  disable-same-site-cookie: false
+  scheduling:
+    enabled: true
+
+auth:
+  crypto-service:
+    static-salt: mock

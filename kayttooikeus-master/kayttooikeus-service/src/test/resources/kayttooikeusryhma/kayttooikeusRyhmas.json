@@ -1,0 +1,24 @@
+[
+  {
+    "ryhmaId": 234,
+    "myonnettyTapahtumaId": 43,
+    "organisaatioOid": "234.2435.234.12343.23",
+    "tehtavanimike": "joku nimike",
+    "ryhmaNames": [
+      {
+        "text": "Ryhmänimi",
+        "lang": "FI"
+      }
+    ],
+    "tila": "MYONNETTY",
+    "tyyppi": "joku tyyppi",
+    "alkuPvm": "2015-01-02",
+    "voimassaPvm": "2015-01-22",
+    "kasitelty": "2015-01-01T00:00:00",
+    "kasittelijaOid": "123456.234",
+    "kasittelijaNimi": "Käsittelijä nimi",
+    "selected": true,
+    "removed": false,
+    "muutosSyy": "syy muutokselle"
+  }
+]

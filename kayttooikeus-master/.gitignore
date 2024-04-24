@@ -1,0 +1,16 @@
+*.iml
+target
+.project
+.idea
+.settings
+.classpath
+.DS_store
+overlays
+node_modules
+
+/bin
+/build
+/.gradle
+
+rebel.xml
+*.log
