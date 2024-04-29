@@ -1,1 +1,0 @@
-SELECT insertkayttooikeus('EHOKS', 'HYODYNTAMIS_JA_JAKO', 'Ehoks hyödyntämis- ja jako-oikeus');

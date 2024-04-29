@@ -1,1 +1,0 @@
-SELECT insertkayttooikeus('EPERUSTEET', 'ADMIN', 'Pääkäyttäjä');

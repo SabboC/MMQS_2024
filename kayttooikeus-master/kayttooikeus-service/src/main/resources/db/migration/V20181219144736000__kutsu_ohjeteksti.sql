@@ -1,1 +1,0 @@
-alter table kutsu add column saate text;

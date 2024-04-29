@@ -1,1 +1,0 @@
-ALTER TABLE kayttajatiedot ALTER COLUMN passwordchange DROP DEFAULT;
