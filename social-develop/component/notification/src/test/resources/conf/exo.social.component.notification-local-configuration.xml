@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 2003-2011 eXo Platform SAS.
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.exoplatform.org/xml/ns/kernel_1_2.xsd http://www.exoplatform.org/xml/ns/kernel_1_2.xsd" xmlns="http://www.exoplatform.org/xml/ns/kernel_1_2.xsd">
+
+  <component>
+    <key>org.exoplatform.commons.api.notification.service.setting.UserSettingService</key>
+    <type>org.exoplatform.settings.jpa.JPAUserSettingServiceImpl</type>
+  </component>
+
+  <component>
+    <key>org.exoplatform.commons.file.services.FileService</key>
+    <type>org.exoplatform.social.notification.mock.MockFileService</type>
+  </component>
+
+  <component>
+    <key>org.exoplatform.commons.api.notification.service.storage.NotificationService</key>
+    <type>org.exoplatform.social.notification.mock.MockNotificationService</type>
+  </component>
+
+  <component>
+    <key>org.exoplatform.commons.api.notification.service.QueueMessage</key>
+    <type>org.exoplatform.social.notification.mock.MockMessageQueue</type>
+  </component>
+
+  <component>
+    <key>org.exoplatform.services.resources.ResourceBundleService</key>
+    <type>org.exoplatform.social.notification.mock.MockResourceBundleService</type>
+  </component>
+
+  <!-- template channel register -->
+  <external-component-plugins>
+    <target-component>org.exoplatform.commons.api.notification.channel.ChannelManager</target-component>
+    <component-plugin>
+      <name>mail.channel.template</name>
+      <set-method>registerTemplateProvider</set-method>
+      <type>org.exoplatform.commons.notification.channel.template.DigestMailTemplateProvider</type>
+      <init-params>
+        <value-param>
+          <name>channel-id</name>
+          <value>MAIL_CHANNEL</value>
+        </value-param>
+      </init-params>
+    </component-plugin>
+    <component-plugin>
+      <name>mail.channel.social.template</name>
+      <set-method>registerTemplateProvider</set-method>
+      <type>org.exoplatform.social.notification.mock.MockMailTemplateProvider</type>
+      <init-params>
+        <value-param>
+          <name>channel-id</name>
+          <value>MAIL_CHANNEL</value>
+        </value-param>
+      </init-params>
+    </component-plugin>
+  </external-component-plugins>
+  
+  <!-- channel register -->
+  <external-component-plugins>
+    <target-component>org.exoplatform.commons.api.notification.channel.ChannelManager</target-component>
+    <component-plugin>
+      <name>mail.channel</name>
+      <set-method>register</set-method>
+      <type>org.exoplatform.commons.notification.channel.MailChannel</type>
+      <description>Register the email channel to manager.</description>
+    </component-plugin>
+    <component-plugin>
+      <name>web.channel</name>
+      <set-method>register</set-method>
+      <type>org.exoplatform.commons.notification.channel.WebChannel</type>
+      <description>Register the email channel to manager.</description>
+    </component-plugin>
+  </external-component-plugins>
+  
+  <external-component-plugins>
+    <target-component>org.exoplatform.social.core.manager.ActivityManager</target-component>
+    <component-plugin>
+      <name>ActivityNotificationImpl</name>
+      <set-method>addActivityEventListener</set-method>
+      <type>org.exoplatform.social.notification.impl.ActivityNotificationImpl</type>
+    </component-plugin>
+  </external-component-plugins>
+  
+  <external-component-plugins>
+    <target-component>org.exoplatform.social.core.manager.IdentityManager</target-component>
+    <component-plugin>
+      <name>ProfileNotificationImpl</name>
+      <set-method>registerProfileListener</set-method>
+      <type>org.exoplatform.social.notification.impl.ProfileNotificationImpl</type>
+    </component-plugin>
+  </external-component-plugins>
+  
+  <external-component-plugins>
+    <target-component>org.exoplatform.social.core.manager.RelationshipManager</target-component>
+    <component-plugin>
+      <name>RelationshipNotificationImpl</name>
+      <set-method>addListenerPlugin</set-method>
+      <type>org.exoplatform.social.notification.impl.RelationshipNotificationImpl</type>
+    </component-plugin>
+  </external-component-plugins>
+
+  <external-component-plugins>
+    <target-component>org.exoplatform.services.organization.OrganizationService</target-component>
+    <component-plugin>
+      <name>social.new.user.event.listener</name>
+      <set-method>addListenerPlugin</set-method>
+      <type>org.exoplatform.social.core.listeners.SocialUserEventListenerImpl</type>
+    </component-plugin>
+    <component-plugin>
+      <name>social.update.membership.event.listener</name>
+      <set-method>addListenerPlugin</set-method>
+      <type>org.exoplatform.social.core.listeners.ExternalUsersListenerImpl</type>
+      <description>Update external profile property.</description>
+    </component-plugin>
+    <component-plugin>
+      <name>social.update.membership.event.listener</name>
+      <set-method>addListenerPlugin</set-method>
+      <type>org.exoplatform.social.core.listeners.SocialMembershipListenerImpl</type>
+      <priority>50</priority>
+    </component-plugin>
+  </external-component-plugins>
+
+  <external-component-plugins>
+    <target-component>org.exoplatform.social.core.space.spi.SpaceService</target-component>
+    <component-plugin>
+      <name>SpaceNotificationImpl</name>
+      <set-method>registerSpaceListenerPlugin</set-method>
+      <type>org.exoplatform.social.notification.impl.SpaceNotificationImpl</type>
+    </component-plugin>
+  </external-component-plugins>
+</configuration>

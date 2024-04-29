@@ -1,3 +1,0 @@
-#! /bin/bash
-
-java -cp target/settlers-jar-with-dependencies.jar org.appland.settlers.rest.Main "$@"

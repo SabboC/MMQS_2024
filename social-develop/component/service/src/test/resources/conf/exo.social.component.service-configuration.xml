@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 2003-2011 eXo Platform SAS.
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.exoplatform.org/xml/ns/kernel_1_2.xsd http://www.exoplatform.org/xml/ns/kernel_1_2.xsd" xmlns="http://www.exoplatform.org/xml/ns/kernel_1_2.xsd">
+
+  <component>
+    <type>org.exoplatform.social.service.rest.AppsRestService</type>
+  </component>
+
+  <component>
+    <type>org.exoplatform.social.service.rest.SpacesRestService</type>
+  </component>
+
+  <component>
+    <type>org.exoplatform.social.service.rest.IdentityRestService</type>
+  </component>
+
+  <component>
+    <type>org.exoplatform.social.service.rest.PeopleRestService</type>
+  </component>
+
+  <component>
+    <type>org.exoplatform.social.service.rest.NotificationsRestService</type>
+  </component>
+
+  <component>
+    <type>io.meeds.social.observer.rest.ObserverRest</type>
+  </component>
+
+  <component>
+    <key>org.exoplatform.social.metadata.thumbnail.ImageThumbnailService</key>
+    <type>org.exoplatform.social.core.metadata.thumbnail.ImageThumbnailServiceImpl</type>
+  </component>
+
+  <component>
+    <type>org.exoplatform.social.core.attachment.storage.FileAttachmentStorage</type>
+  </component>
+
+  <external-component-plugins>
+    <target-component>org.exoplatform.social.metadata.MetadataService</target-component>
+    <component-plugin>
+      <name>ThumbnailMetadataPlugin</name>
+      <set-method>addMetadataTypePlugin</set-method>
+      <type>org.exoplatform.social.metadata.MetadataTypePlugin</type>
+      <init-params>
+        <value-param>
+          <name>allowMultipleItemsPerObject</name>
+          <description>Whether to allow adding the same object to the same Metadata or not</description>
+          <value>true</value>
+        </value-param>
+        <object-param>
+          <name>metadataType</name>
+          <object type="org.exoplatform.social.metadata.model.MetadataType">
+            <field name="id">
+              <int>5</int>
+            </field>
+            <field name="name">
+              <string>thumbnail</string>
+            </field>
+          </object>
+        </object-param>
+      </init-params>
+    </component-plugin>
+  </external-component-plugins>
+
+  <external-component-plugins>
+    <target-component>org.exoplatform.services.listener.ListenerService</target-component>
+    <component-plugin>
+      <name>file.created</name>
+      <set-method>addListener</set-method>
+      <type>org.exoplatform.social.core.listeners.ThumbnailFileListener</type>
+    </component-plugin>
+    <component-plugin>
+      <name>file.updated</name>
+      <set-method>addListener</set-method>
+      <type>org.exoplatform.social.core.listeners.ThumbnailFileListener</type>
+    </component-plugin>
+    <component-plugin>
+      <name>file.deleted</name>
+      <set-method>addListener</set-method>
+      <type>org.exoplatform.social.core.listeners.ThumbnailFileListener</type>
+    </component-plugin>
+  </external-component-plugins>
+
+  <external-component-plugins>
+      <target-component>org.exoplatform.services.rest.impl.RequestHandlerImpl</target-component>
+      <component-plugin>
+       <name>ws.rs.response.filter</name>
+       <set-method>addPlugin</set-method>
+       <type>org.exoplatform.services.rest.impl.ResponseFilterComponentPlugin</type>
+       <init-params>
+          <value-param>
+             <name>ws.rs.response.social-response-filter</name>
+             <value>org.exoplatform.social.rest.filter.SocialResponseFilter</value>
+          </value-param>
+       </init-params>
+      </component-plugin>
+  </external-component-plugins>
+
+  <external-component-plugins>
+    <target-component>org.exoplatform.social.attachment.AttachmentService</target-component>
+    <component-plugin>
+      <name>ActivityAttachmentPlugin</name>
+      <set-method>addPlugin</set-method>
+      <type>org.exoplatform.social.core.plugin.ActivityAttachmentPlugin</type>
+    </component-plugin>
+    <component-plugin>
+      <name>ImageAttachmentPlugin</name>
+      <set-method>addPlugin</set-method>
+      <type>io.meeds.social.image.plugin.ImageAttachmentPlugin</type>
+    </component-plugin>
+  </external-component-plugins>
+
+</configuration>
